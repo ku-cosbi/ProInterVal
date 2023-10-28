@@ -6,6 +6,8 @@ ProInterVal is an approach for validating protein-protein interfaces using learn
 ![framework](https://github.com/ku-cosbi/ProInterVal/assets/26218685/ab90466a-c805-439f-a47c-339c8fb63093)
 
 ## Installation
-```git clone https://github.com/ku-cosbi/ProInterVal
+```
+git clone https://github.com/ku-cosbi/ProInterVal
 cd ProInterVal
-pip install -r requirements.txt```
+pip install -r requirements.txt
+```
