@@ -90,8 +90,8 @@ class Transformer(nn.Module):
 
 
 class RepresentationLearningModel(nn.Module):
-    def __init__(self, input_size, latent_size, view_size, transformer_input_size, hidden_size, num_layers, num_heads,
-                 dropout, lambda0, lambda1, lambda2, lambda3):
+    def __init__(self, input_size=30, latent_size=128, view_size=64, transformer_input_size=64, hidden_size=128, num_layers=4, num_heads=8,
+                 dropout=0.1, lambda0=0.2, lambda1=0.3, lambda2=0.3, lambda3=0.2):
         super(RepresentationLearningModel, self).__init()
         self.multiview_gcl_autoencoder = MultiviewContrastiveGCLAutoencoder(input_size, latent_size, view_size)
         self.transformer = Transformer(transformer_input_size, hidden_size, num_layers, num_heads, dropout)
