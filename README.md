@@ -21,4 +21,8 @@ conda activate ProInterVal
 ```
 pip install -r requirements.txt
 ```
-
+### Exit virtual environment
+Whenever you want to exit, run the following command:
+```
+conda deactivate
+```
