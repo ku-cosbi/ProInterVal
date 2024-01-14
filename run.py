@@ -42,23 +42,8 @@ if __name__ == '__main__':
             elif parser.mode == "test":
                 test_data = data_prep.prepare_data(parser.path)
 
-                input_size = 30  # Input size for nodes and edges in GCL Autoencoder
-                latent_size = 128  # Size of the latent space
-                view_size = 64  # View size for the MultiviewContrastiveLayer
-                transformer_input_size = 64  # Input size for the Transformer
-                hidden_size = 128  # Hidden size for the Transformer
-                num_layers = 4  # Number of Transformer layers
-                num_heads = 8  # Number of attention heads
-                dropout = 0.1  # Dropout rate
-                lambda0 = 0.2  # Weight for the node reconstruction loss
-                lambda1 = 0.3  # Weight for the KL divergence loss
-                lambda2 = 0.3  # Weight for the MSE loss
-                lambda3 = 0.2  # Weight for the edge reconstruction loss
-
                 # Load representation learning model
-                model = rep_model.RepresentationLearningModel(input_size, latent_size, view_size, transformer_input_size, hidden_size,
-                                                    num_layers,
-                                                    num_heads, dropout, lambda0, lambda1, lambda2, lambda3)
+                model = rep_model.RepresentationLearningModel()
 
                 model_path = load_file_from_url(representation_model_path)
                 model.load_state_dict(torch.load(model_path))
