@@ -1,8 +1,8 @@
 import os
 import torch
 import data_prep
-from model.model import *
-from model.gnn import *
+from model import model as rep_model
+from model import gnn
 import pickle
 import argparse
 import requests
@@ -56,7 +56,7 @@ if __name__ == '__main__':
                 lambda3 = 0.2  # Weight for the edge reconstruction loss
 
                 # Load representation learning model
-                model = RepresentationLearningModel(input_size, latent_size, view_size, transformer_input_size, hidden_size,
+                model = rep_model.RepresentationLearningModel(input_size, latent_size, view_size, transformer_input_size, hidden_size,
                                                     num_layers,
                                                     num_heads, dropout, lambda0, lambda1, lambda2, lambda3)
 
@@ -64,7 +64,7 @@ if __name__ == '__main__':
                 model.load_state_dict(torch.load(model_path))
                 test_dct = {}
                 for i, t in enumerate(test_data):
-                    embedding = rep_model.get_interface_representation(representation_model, t[1], t[2])
+                    embedding = rep_model.get_interface_representation(model, t[1], t[2])
                     test_dct[t[0]] = embedding
 
                 with open('learned_representations.pkl', 'wb') as f:
@@ -81,8 +81,7 @@ if __name__ == '__main__':
                 print("Trained model is saved as gnn_model.pt into your current directory.")
             elif parser.mode == "test":
                 test = data_prep.get_deepinterface_data(parser.path)
-
-                gnn_model = GNNModel()
+                
                 num_features = len(test[0])
                 hidden_size = 512
                 num_classes = 2
@@ -91,7 +90,7 @@ if __name__ == '__main__':
                 device = "cuda" if torch.cuda.is_available() else "cpu"
 
                 # Load model
-                model = GNNModel(num_features, hidden_size, num_classes).to(device)
+                model = gnn.GNNModel(num_features, hidden_size, num_classes).to(device)
                 model_path = load_file_from_url(validation_model_path)
                 model.load_state_dict(torch.load(model_path))
 
@@ -99,7 +98,7 @@ if __name__ == '__main__':
 
                 for i, t in enumerate(test):
                     X, A = t[1], t[2]
-                    y_hat = gnn.predict(gnn_model, X, A)
+                    y_hat = gnn.predict(model, X, A)
                     result_file.write(f"{t[0]}: {y_hat}")
 
                 result_file.close()
