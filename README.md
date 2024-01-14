@@ -10,11 +10,12 @@ ProInterVal is an approach for validating protein-protein interfaces using learn
 git clone https://github.com/ku-cosbi/ProInterVal
 cd ProInterVal
 ```
-### Install virtualenv via pip
+### Install conda and create virtual environment
+https://docs.conda.io/projects/conda/en/latest/user-guide/install/macos.html
+
 ```
-pip install virtualenv
-virtualenv venv
-source venv/bin/activate
+conda create -n ProInterVal
+conda activate ProInterVal
 ```
 ### Install dependencies
 ```
