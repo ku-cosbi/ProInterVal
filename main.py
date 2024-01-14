@@ -32,15 +32,15 @@ if __name__ == '__main__':
     train_lst, val_lst, test_lst = [], [], []
     for i, t in enumerate(train):
         embedding = rep_model.get_interface_representation(representation_model, t[1], t[2])
-        train_lst.appen(embedding)
+        train_lst.append(embedding)
 
     for i, t in enumerate(val):
         embedding = rep_model.get_interface_representation(representation_model, t[1], t[2])
-        val_lst.appen(embedding)
+        val_lst.append(embedding)
 
     for i, t in enumerate(test):
         embedding = rep_model.get_interface_representation(representation_model, t[1], t[2])
-        test_lst.appen(embedding)
+        test_lst.append(embedding)
 
     gnn_model = gnn.train(train)
     torch.save(gnn_model, "../../models/gnn_model.pt")
