@@ -11,7 +11,7 @@ git clone https://github.com/ku-cosbi/ProInterVal
 cd ProInterVal
 ```
 ### Install conda and create virtual environment
-https://docs.conda.io/projects/conda/en/latest/user-guide/install/macos.html
+[Install conda from this link](https://docs.conda.io/projects/conda/en/latest/user-guide/install/macos.html)
 
 ```
 conda create -n ProInterVal
