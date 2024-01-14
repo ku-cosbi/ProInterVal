@@ -144,9 +144,8 @@ def generate_graph(path, pdb_id, residue_list, chain_1, chain_2):
     return node_feature_tensor, adj_matrix_tensor
 
 
-def prepare_data():
+def prepare_data(directory='../../../../../datasets/pdb/interfaces/pdb'):
     data = []
-    directory = '../../../../../datasets/pdb/interfaces/pdb'
     for root, dirs, _ in os.walk(directory):
         for d in dirs:
             for path, _, files in os.walk(os.path.join(root, d)):
@@ -159,9 +158,8 @@ def prepare_data():
     return data
 
 
-def get_deepinterface_data():
+def get_deepinterface_data(directory='../../cosbi/backup/kuacc/ahakouz17/workfolder/deepinter/deepinter_data/'):
     data = []
-    directory = '../../cosbi/backup/kuacc/ahakouz17/workfolder/deepinter/deepinter_data/'
     for root, dirs, _ in os.walk(directory):
         for d in dirs:
             for path, _, files in os.walk(os.path.join(root, d)):
