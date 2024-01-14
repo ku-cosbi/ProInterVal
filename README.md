@@ -49,7 +49,7 @@ import data_prep
 from model import model as rep_model
 
 test_data = data_prep.prepare_data(path/to/your/dataset/directory)
-model = RepresentationLearningModel()
+model = rep_model.RepresentationLearningModel()
 model.load_state_dict(torch.load(local/path/to/your/trained/model))
 
 for i, t in enumerate(test_data):
